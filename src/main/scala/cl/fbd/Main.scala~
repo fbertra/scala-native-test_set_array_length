@@ -1,0 +1,91 @@
+package cl.fbd
+
+import scalanative.native._
+import scalanative.libc.stdlib._
+
+object Main {
+  def testDouble () = {
+    val arr = new Array [Double] (3)
+
+    val len = arr.length
+
+    fprintf(stdout, c"Double\n")
+    
+    if (len == 0)
+      fprintf(stdout, c"Zero length\n")
+    
+    else
+      fprintf(stdout, c"length: %d \n", len)
+    
+    arr (0) = 1.0
+    arr (2) = 3.0
+
+    val arr0 = arr (0)
+
+    fprintf(stdout, c"value at offset 0: %f \n", arr0)
+      
+    val arr2 = arr (2)
+
+    fprintf(stdout, c"value at offset 2: %f \n", arr2)
+  }
+  
+  def testBoolean () = {
+    val arr = new Array [Boolean] (3)
+
+    val len = arr.length
+
+    fprintf(stdout, c"Boolean\n")
+    
+    if (len == 0)
+      fprintf(stdout, c"Zero length\n")
+    
+    else
+      fprintf(stdout, c"length: %d \n", len)
+    
+    arr (0) = true
+    arr (2) = false
+
+    val arr0 = arr (0)
+
+    fprintf(stdout, c"value at offset 0: %d \n", arr0)
+      
+    val arr2 = arr (2)
+
+    fprintf(stdout, c"value at offset 2: %d \n", arr2)
+  }
+  
+  def testInt () = {
+    val arr = new Array [Int] (3)
+
+    val len = arr.length
+    
+    fprintf(stdout, c"Int\n")
+    
+    if (len == 0)
+      fprintf(stdout, c"Zero length\n")
+    
+    else
+      fprintf(stdout, c"length: %d \n", len)
+
+    arr (0) = 1
+    arr (2) = 3
+
+    val arr0 = arr (0)
+
+    fprintf(stdout, c"value at offset 0: %d \n", arr0)
+      
+    val arr2 = arr (2)
+
+    fprintf(stdout, c"value at offset 2: %d \n", arr2)
+  }
+  
+  def main (args : Array [String]) = {
+    fprintf(stdout, c"Test different array types\n")
+    
+    testInt ()    
+    testDouble ()      
+    testBoolean ()
+      
+    ()
+  }
+}
